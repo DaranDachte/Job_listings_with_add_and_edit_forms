@@ -1,13 +1,16 @@
 import FirstBlockA from "./FirstBlockA/FirstBlockA";
-import FirstBlockB from "./FirstBlockB/FirstBlockB";
 import FirstBlockC from "./FirstBlockC/FirstBlockC";
 
-const FirstBlock = () => {
+const FirstBlock = ({ params }) => {
   return (
     <div>
-      <FirstBlockA />
-      <FirstBlockB />
-      <FirstBlockC />
+      <FirstBlockA companyName={params.companyName} labels={params.labels} />
+      <div>{params.vacancyName} </div>
+      <FirstBlockC
+        publishingDate={params.publishingDate}
+        employmentType={params.employmentType}
+        location={params.location}
+      />
     </div>
   );
 };

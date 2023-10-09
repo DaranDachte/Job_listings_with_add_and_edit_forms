@@ -1,9 +1,17 @@
+import { useSelector } from "react-redux";
 import Item from "./Item/Item";
 
 const List = () => {
+  const jobVacancies = useSelector((state) => state.jobVacancies);
+  console.log(jobVacancies);
+
   return (
     <div>
-      <Item />
+      <ul>
+        {jobVacancies.map((vacancy) => (
+          <Item key={vacancy.id} vacancy={vacancy} />
+        ))}
+      </ul>
     </div>
   );
 };
