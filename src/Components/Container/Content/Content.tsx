@@ -1,12 +1,14 @@
-import List from "./List/List";
-import SearchForm from "./SearchForm/SearchForm";
-
+import AddVacancy from "./AddVacancy/AddVacancy";
+import Home from "./Home/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 const Content = () => {
   return (
-    <div>
-      <List />
-      <SearchForm />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add" element={<AddVacancy />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

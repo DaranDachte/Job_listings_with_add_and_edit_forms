@@ -1,5 +1,12 @@
 //state приходит из стора, экшн приходит из диспатч
 import { makeid } from "../Helpers/MakeId";
+import Logo1 from "../assets/img/Logo.svg";
+import manage from "../assets/img/manage.svg";
+
+//function getImgUrl(name) {
+// return new URL(`../assets/img/${name}.svg`, import.meta.url).href;}
+//console.log(getImgUrl("photosnap"));
+
 const initialState = [
   {
     id: makeid(5),
@@ -8,7 +15,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "USA only",
-    logo: "url",
+    logo: manage,
     labels: ["New", "Featured"],
     tags: ["Frontend", "Senior", "Html", "Css", "JavaScript"],
   },
@@ -19,9 +26,98 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Part Time",
     location: "Remote",
-    logo: "url",
+    logo: manage,
     labels: ["New", "Featured"],
     tags: ["FullStack", "Frontend", "Python", "React", "TypeScript"],
+  },
+
+  {
+    id: makeid(5),
+    companyName: "Eyecam",
+    vacancyName: "Backend Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "Germany",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["Backend", "Python", "MongoDB", "JavaScript"],
+  },
+  {
+    id: makeid(5),
+    companyName: "Account",
+    vacancyName: "Junior Web Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "Remote",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript"],
+  },
+  {
+    id: makeid(5),
+    companyName: "Faceit",
+    vacancyName: "Web Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "Remote",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["FullStack", "Frontend", "Middle", "React", "TypeScript"],
+  },
+  {
+    id: makeid(5),
+    companyName: "Insure",
+    vacancyName: "Software Engineer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "Remote",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["Backend", "Midweight", "JavaScript", "Sass", "Ruby"],
+  },
+  {
+    id: makeid(5),
+    companyName: "Loop",
+    vacancyName: "Junior Backend Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "United Kingdom",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["Backend", "Ror", "Sass", "Ruby"],
+  },
+  {
+    id: makeid(5),
+    companyName: "myHome",
+    vacancyName: "Junior  Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "United Kingdom",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript", "MongoDB"],
+  },
+  {
+    id: makeid(5),
+    companyName: "Shortly",
+    vacancyName: "Junior  Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "EU only",
+    logo: Logo1,
+    labels: ["New", "Featured"],
+    tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript", "MongoDB"],
+  },
+  {
+    id: makeid(5),
+    companyName: "Air Filter",
+    vacancyName: "Junior  Developer",
+    publishingDate: Date.now(),
+    employmentType: "Full Time",
+    location: "Remote",
+    logo: manage,
+    labels: ["New", "Featured"],
+    tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript", "MongoDB"],
   },
 ];
 

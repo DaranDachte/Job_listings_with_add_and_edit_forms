@@ -4,7 +4,7 @@ import Header from "./Header/Header";
 
 const Container = () => {
   return (
-    <div>
+    <div className=" bg-[#eef7f6]">
       <Header />
       <Content />
       <Footer />
