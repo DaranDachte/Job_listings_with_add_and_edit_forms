@@ -1,7 +1,7 @@
 const FirstBlockA = ({ labels, companyName }) => {
   return (
     <div className="flex justify-around ">
-      <span> {companyName}</span>{" "}
+      <span className=" text-[#5CA5A5]"> {companyName}</span>{" "}
       {labels.map((label) => (
         <span>{label}</span>
       ))}
