@@ -1,8 +1,15 @@
 //state приходит из стора, экшн приходит из диспатч
 import { makeid } from "../Helpers/MakeId";
-import Logo1 from "../assets/img/Logo.svg";
+import photosnap from "../assets/img/photosnap.svg";
 import manage from "../assets/img/manage.svg";
-
+import eyecam from "../assets/img/eyecam.svg";
+import account from "../assets/img/account.svg";
+import faceit from "../assets/img/faceit.svg";
+import insure from "../assets/img/insure.svg";
+import loop from "../assets/img/loopStudios.svg";
+import myHome from "../assets/img/loopStudios.svg";
+import shortly from "../assets/img/shortly.svg";
+import airFilter from "../assets/img/airFilter.svg";
 //function getImgUrl(name) {
 // return new URL(`../assets/img/${name}.svg`, import.meta.url).href;}
 //console.log(getImgUrl("photosnap"));
@@ -15,7 +22,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "USA only",
-    logo: manage,
+    logo: photosnap,
     labels: ["New", "Featured"],
     tags: ["Frontend", "Senior", "Html", "Css", "JavaScript"],
   },
@@ -38,7 +45,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "Germany",
-    logo: Logo1,
+    logo: eyecam,
     labels: ["New", "Featured"],
     tags: ["Backend", "Python", "MongoDB", "JavaScript"],
   },
@@ -49,7 +56,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "Remote",
-    logo: Logo1,
+    logo: account,
     labels: ["New", "Featured"],
     tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript"],
   },
@@ -60,7 +67,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "Remote",
-    logo: Logo1,
+    logo: faceit,
     labels: ["New", "Featured"],
     tags: ["FullStack", "Frontend", "Middle", "React", "TypeScript"],
   },
@@ -71,7 +78,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "Remote",
-    logo: Logo1,
+    logo: insure,
     labels: ["New", "Featured"],
     tags: ["Backend", "Midweight", "JavaScript", "Sass", "Ruby"],
   },
@@ -82,7 +89,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "United Kingdom",
-    logo: Logo1,
+    logo: loop,
     labels: ["New", "Featured"],
     tags: ["Backend", "Ror", "Sass", "Ruby"],
   },
@@ -93,7 +100,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "United Kingdom",
-    logo: Logo1,
+    logo: myHome,
     labels: ["New", "Featured"],
     tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript", "MongoDB"],
   },
@@ -104,7 +111,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "EU only",
-    logo: Logo1,
+    logo: shortly,
     labels: ["New", "Featured"],
     tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript", "MongoDB"],
   },
@@ -115,7 +122,7 @@ const initialState = [
     publishingDate: Date.now(),
     employmentType: "Full Time",
     location: "Remote",
-    logo: manage,
+    logo: airFilter,
     labels: ["New", "Featured"],
     tags: ["FullStack", "Frontend", "Junior", "React", "TypeScript", "MongoDB"],
   },
