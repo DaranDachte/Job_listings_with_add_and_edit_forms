@@ -7,7 +7,7 @@ import account from "../assets/img/account.svg";
 import faceit from "../assets/img/faceit.svg";
 import insure from "../assets/img/insure.svg";
 import loop from "../assets/img/loopStudios.svg";
-import myHome from "../assets/img/loopStudios.svg";
+import myHome from "../assets/img/myhome.svg";
 import shortly from "../assets/img/shortly.svg";
 import airFilter from "../assets/img/airFilter.svg";
 //function getImgUrl(name) {
