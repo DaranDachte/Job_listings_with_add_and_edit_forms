@@ -8,7 +8,7 @@ const FirstBlock = ({ params }) => {
         <FirstBlockA companyName={params.companyName} labels={params.labels} />
       </div>
       <div>
-        <FirstBlockB vacancyName={params.vacancyName} />
+        <FirstBlockB vacancyName={params.vacancyName} vacancyId={params.id} />
       </div>
       <div>
         <FirstBlockC

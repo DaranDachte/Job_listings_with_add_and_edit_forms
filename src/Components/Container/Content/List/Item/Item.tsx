@@ -10,7 +10,9 @@ const Item = ({ vacancy }) => {
     employmentType: vacancy.employmentType,
     location: vacancy.location,
     tags: vacancy.tags,
+    id: vacancy.id,
   };
+
   return (
     <div className="flex  justify-between rounded mb-[1.5rem] py-[2rem] px-[3rem]  bg-[#fff] ">
       <div className=" flex w-1/2">
