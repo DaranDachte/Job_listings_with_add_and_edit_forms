@@ -10,9 +10,6 @@ import loop from "../assets/img/loopStudios.svg";
 import myHome from "../assets/img/myhome.svg";
 import shortly from "../assets/img/shortly.svg";
 import airFilter from "../assets/img/airFilter.svg";
-//function getImgUrl(name) {
-// return new URL(`../assets/img/${name}.svg`, import.meta.url).href;}
-//console.log(getImgUrl("photosnap"));
 
 const initialState = [
   {
