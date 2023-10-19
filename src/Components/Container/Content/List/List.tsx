@@ -6,9 +6,9 @@ const List = () => {
   const jobVacancies = useSelector((state) => state.jobVacancies);
 
   return (
-    <div className="flex flex-col  w-[70rem]  my-0 mx-auto">
-      <div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <div className="flex flex-col  w-[70rem]  my-0 mx-auto  ">
+      <div className="my-5">
+        <button className="bg-[#2E8B57] hover:bg-[#20B2AA] text-white font-bold py-2 px-4 rounded">
           <Link to={"/add"}> Add Vacancy</Link>
         </button>
       </div>

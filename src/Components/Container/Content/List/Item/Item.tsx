@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
-import FirstBlock from "./FirstBlock/FirstBlock";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import FirstBlock from "./FirstBlock/FirstBlock";
 import Logo from "./Logo/Logo";
 import Tags from "./Tags/Tags";
 import { REMOVE_JOB_VACANCY } from "../../../../../actions";
@@ -15,6 +15,7 @@ const Item = ({ vacancy }) => {
     tags: vacancy.tags,
     id: vacancy.id,
   };
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDeleteVacancy = (id) => {
     dispatch(REMOVE_JOB_VACANCY(id));
@@ -28,6 +29,14 @@ const Item = ({ vacancy }) => {
       </div>
       <div className="flex items-center  justify-end w-1/2">
         <Tags tags={vacancy.tags} />
+      </div>
+      <div className="h-[2rem] w-[5rem]">
+        <button
+          onClick={() => navigate(`/details/${vacancy.id}/edit`)}
+          className="hover:text-[#FFF] rounded bg-[#89CFF0] text-[#041E42]  hover:bg-[#5CA5A5]  tracking-[-0.00769rem]  hover:cursor-pointer "
+        >
+          Edit
+        </button>
       </div>
       <div className="h-[2rem] w-[5rem]">
         <button
