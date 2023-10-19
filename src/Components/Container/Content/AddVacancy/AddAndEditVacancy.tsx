@@ -1,22 +1,39 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ADD_JOB_VACANCY } from "../../../../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_JOB_VACANCY, UPDATE_JOB_VACANCY } from "../../../../actions";
 import { makeid5 } from "../../../../Helpers/MakeId";
+import { isExist } from "../../../../Helpers/isExist";
+const AddAndEditVacancy = () => {
+  const jobVacancies = useSelector((state) => state.jobVacancies);
+  const { id } = useParams();
+  const vacancyInfo = jobVacancies.filter((vacancy) => vacancy.id === id)[0];
 
-const DESCRIPTION_TEXT =
-  " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus modi mollitia unde eaque voluptatibus nihil minima nisi facilis eveniet, numquam dolorem, nemo labore aliquid id doloribus voluptate corrupti non, hic consequuntur vero laboriosam? Assumenda, dolores necessitatibus! Esse quibusdam qui nam voluptas beatae magnam enim neque quis eos ut? Dicta laborum mollitia error nihil repellendus consectetur illum quaerat officiis laboriosam fugit velit eius hic, autem magnam explicabo reiciendis at. Similique porro sint eius modi dolores deserunt ipsa obcaecati voluptatibus animi quisquam quibusdam provident, ducimus nihil sit velit eligendi hic minima eum est voluptate, officiis magnam magni neque doloremque. Molestias voluptas animi at reiciendis velit dolorem quaerat odio nisi vitae reprehenderit, earum soluta possimus non tempore omnis impedit laudantium ratione quo laboriosam fuga! Sed excepturi quisquam doloremque aliquid, ipsam, fuga quibusdam laboriosam, explicabo consectetur obcaecati minus tenetur est eum officiis vel nostrum ipsa. Veniam praesentium pariatur dolorem architecto autem numquam, adipisci obcaecati eum laudantium sequi nisi qui iste excepturi reprehenderit error hic exercitationem alias nobis commodi ut asperiores voluptate nam possimus! Rem debitis veritatis, tempore nesciunt temporibus fugiat iste qui tenetur illo. Sapiente sunt repellendus sit deserunt quam culpa consequatur est, doloremque dignissimos, sequi cupiditate odit suscipit officiis voluptate itaque ipsam assumenda!";
-const AddVacancy = () => {
-  const [companyName, setCompanyName] = useState("");
-  const [vacancyName, setVacancyName] = useState("");
-  const [employmentType, setEmploymentType] = useState("");
-  const [location, setLocation] = useState("");
-  const [tags, setTags] = useState("");
-  const [labels, setLabels] = useState("");
-  const [description, setDescription] = useState("");
+  const [companyName, setCompanyName] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.companyName : ""
+  );
+  const [vacancyName, setVacancyName] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.vacancyName : ""
+  );
+  const [employmentType, setEmploymentType] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.employmentType : ""
+  );
+  const [location, setLocation] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.location : ""
+  );
+  const [tags, setTags] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.tags.join(", ") : ""
+  );
+  const [labels, setLabels] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.labels.join(", ") : ""
+  );
+  const [description, setDescription] = useState(
+    isExist(vacancyInfo) ? vacancyInfo.description : ""
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const labelClasses = "block text-gray-700 text-sm font-bold mb-2";
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,18 +47,32 @@ const AddVacancy = () => {
       description;
 
     if (allIn) {
-      const data = {
-        companyName,
-        vacancyName,
-        employmentType,
-        location,
-        tags: tags.split(", "),
-        labels: labels.split(", "),
-        description,
-        id: makeid5(),
-      };
-      dispatch(ADD_JOB_VACANCY(data));
-      // dispatch ({type:"ADD_JOB_VACANCY", payload:data })
+      if (isExist(vacancyInfo)) {
+        const upDatedVacancyInfo = {
+          ...vacancyInfo,
+          companyName,
+          vacancyName,
+          employmentType,
+          location,
+          tags: tags.split(", "),
+          labels: labels.split(", "),
+          description,
+        };
+        dispatch(UPDATE_JOB_VACANCY(upDatedVacancyInfo));
+      } else {
+        const data = {
+          companyName,
+          vacancyName,
+          employmentType,
+          location,
+          tags: tags.split(", "),
+          labels: labels.split(", "),
+          description,
+          id: makeid5(),
+        };
+        dispatch(ADD_JOB_VACANCY(data));
+        // dispatch ({type:"ADD_JOB_VACANCY", payload:data })
+      }
 
       setCompanyName("");
       setVacancyName("");
@@ -59,7 +90,7 @@ const AddVacancy = () => {
         <Link to={"/"}>Back to List</Link>
       </div>
       <header>
-        <h2>AddVacancy</h2>
+        <h2>{isExist(vacancyInfo) ? "Edit" : "Add"} Vacancy </h2>
       </header>
       <form onSubmit={handleSubmit}>
         <label className={labelClasses} htmlFor="companyName">
@@ -141,4 +172,4 @@ const AddVacancy = () => {
   );
 };
 
-export default AddVacancy;
+export default AddAndEditVacancy;
