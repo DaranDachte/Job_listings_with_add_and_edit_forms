@@ -1,16 +1,29 @@
-const colorMap = {
-  "NEW!": "#5CA5A5",
-  FEATURED: "#2B3939",
+type FirstBlockAProps = {
+  labels: string[];
+  companyName: string;
 };
 
-const FirstBlockA = ({ labels, companyName }) => {
+type colorMapT = {
+  [k: string]: string;
+};
+
+const colorMap: colorMapT = {
+  "NEW!": "bg-[#5CA5A5]",
+  FEATURED: "bg-[#2B3939]",
+};
+
+const FirstBlockA: React.FC<FirstBlockAProps> = ({ labels, companyName }) => {
   return (
     <div className="flex justify-around ">
-      <span className=" text-[#5CA5A5]"> {companyName}</span>
-      {labels.map((label) => {
-        const spanClasses = `rounded h-[1.5rem] bg-[${colorMap[label]}]`;
-        return <span className={spanClasses}>{label}</span>;
-      })}
+      <div className="w-1/3">
+        <span className=" text-[#5CA5A5]"> {companyName}</span>
+      </div>
+      <div className="w-2/3">
+        {labels.map((label) => {
+          const spanClasses = ` text-white rounded-lg px-2 py-1 mx-2 my-3 h-[1.5rem] ${colorMap[label]}`;
+          return <span className={spanClasses}>{label}</span>;
+        })}
+      </div>
     </div>
   );
 };

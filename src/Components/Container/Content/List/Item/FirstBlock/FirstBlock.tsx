@@ -1,7 +1,12 @@
 import FirstBlockA from "./FirstBlockA/FirstBlockA";
 import FirstBlockC from "./FirstBlockC/FirstBlockC";
 import FirstBlockB from "./FirstBlockB/FirstBlockB";
-const FirstBlock = ({ params }) => {
+import { ParamsT } from "../Item";
+type FirstBlockProps = {
+  params: ParamsT;
+};
+
+const FirstBlock: React.FC<FirstBlockProps> = ({ params }) => {
   return (
     <div className="flex flex-col ml-3">
       <div>

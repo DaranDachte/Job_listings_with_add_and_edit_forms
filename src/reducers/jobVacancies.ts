@@ -10,8 +10,22 @@ import loop from "../assets/img/loopStudios.svg";
 import myHome from "../assets/img/myhome.svg";
 import shortly from "../assets/img/shortly.svg";
 import airFilter from "../assets/img/airFilter.svg";
+import type { Vacancy } from "../Helpers/domain";
 
-const initialState = [
+export const logoArray = [
+  photosnap,
+  manage,
+  eyecam,
+  account,
+  faceit,
+  insure,
+  loop,
+  myHome,
+  shortly,
+  airFilter,
+];
+
+const initialState: Vacancy[] = [
   {
     id: makeid5(),
     companyName: "Photosnap",

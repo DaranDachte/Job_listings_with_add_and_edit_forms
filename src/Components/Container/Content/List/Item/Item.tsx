@@ -4,6 +4,18 @@ import FirstBlock from "./FirstBlock/FirstBlock";
 import Logo from "./Logo/Logo";
 import Tags from "./Tags/Tags";
 import { REMOVE_JOB_VACANCY } from "../../../../../actions";
+
+export type ParamsT = {
+  vacancyName: string;
+  companyName: string;
+  labels: string[];
+  publishingDate: string;
+  employmentType: string;
+  location: Location;
+  tags: string[];
+  id: string;
+};
+
 const Item = ({ vacancy }) => {
   const params = {
     vacancyName: vacancy.vacancyName,
@@ -30,21 +42,21 @@ const Item = ({ vacancy }) => {
       <div className="flex items-center  justify-end w-1/2">
         <Tags tags={vacancy.tags} />
       </div>
-      <div className="h-[2rem] w-[5rem]">
-        <button
-          onClick={() => navigate(`/details/${vacancy.id}/edit`)}
-          className="hover:text-[#FFF] rounded bg-[#89CFF0] text-[#041E42]  hover:bg-[#5CA5A5]  tracking-[-0.00769rem]  hover:cursor-pointer "
-        >
-          Edit
-        </button>
-      </div>
-      <div className="h-[2rem] w-[5rem]">
-        <button
-          className="hover:text-[#FFF] rounded bg-[#89CFF0] text-[#041E42]  hover:bg-[#5CA5A5]  tracking-[-0.00769rem]  hover:cursor-pointer "
-          onClick={() => handleDeleteVacancy(vacancy.id)}
-        >
-          Delete
-        </button>
+      <div className="flex items-center justify-end pl-10">
+        <div className="h-[2rem] w-[5rem]">
+          <span
+            onClick={() => navigate(`/details/${vacancy.id}/edit`)}
+            className="bg-[#2E8B57] hover:bg-[#20B2AA] text-white font-normal p-2 mx-1 rounded tracking-[-0.00769rem]  hover:cursor-pointer"
+          >
+            Edit
+          </span>
+          <span
+            className="bg-[#2E8B57] hover:bg-[#20B2AA] text-white font-normal p-2 mx-1 rounded tracking-[-0.00769rem]  hover:cursor-pointer"
+            onClick={() => handleDeleteVacancy(vacancy.id)}
+          >
+            Delete
+          </span>
+        </div>
       </div>
     </div>
   );
