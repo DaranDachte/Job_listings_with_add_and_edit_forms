@@ -5,10 +5,13 @@ import { ADD_JOB_VACANCY, UPDATE_JOB_VACANCY } from "../../../../actions";
 import { makeid5 } from "../../../../Helpers/MakeId";
 import { isExist } from "../../../../Helpers/isExist";
 import { getRandomLogo } from "../../../../Helpers/getRandomLogo";
+import type { Vacancy } from '../../../../Helpers/domain';
+import type { RootState } from '../../../../store';
+
 const AddAndEditVacancy = () => {
-  const jobVacancies = useSelector((state) => state.jobVacancies);
+  const jobVacancies: Vacancy[] = useSelector((state: RootState) => state.jobVacancies);
   const { id } = useParams();
-  const vacancyInfo = jobVacancies.filter((vacancy) => vacancy.id === id)[0];
+  const vacancyInfo: Vacancy = jobVacancies.filter((vacancy) => vacancy.id === id)[0];
 
   const [companyName, setCompanyName] = useState(
     isExist(vacancyInfo) ? vacancyInfo.companyName : ""
@@ -72,6 +75,7 @@ const AddAndEditVacancy = () => {
           description,
           id: makeid5(),
           logo: getRandomLogo(),
+          publishingDate: 'just now',
         };
         dispatch(ADD_JOB_VACANCY(data));
         // dispatch ({type:"ADD_JOB_VACANCY", payload:data })

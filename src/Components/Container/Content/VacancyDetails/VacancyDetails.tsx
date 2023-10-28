@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { RootState } from '../../../../store';
 
 const VacancyDetails = () => {
-  const jobVacancies = useSelector((state) => state.jobVacancies);
+  const jobVacancies = useSelector((state: RootState) => state.jobVacancies);
   const { id } = useParams();
   const vacancyDetails = jobVacancies.filter((vacancy) => vacancy.id === id)[0];
 

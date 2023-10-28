@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import Item from "./Item/Item";
 import { Link } from "react-router-dom";
+import type { RootState } from '../../../../store';
 
 const List = () => {
-  const jobVacancies = useSelector((state) => state.jobVacancies);
+  const jobVacancies = useSelector((state: RootState) => state.jobVacancies);
 
   return (
     <div className="flex flex-col  w-[70rem]  my-0 mx-auto  ">
