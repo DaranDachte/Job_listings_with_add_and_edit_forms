@@ -1,5 +1,6 @@
 //state приходит из стора, экшн приходит из диспатч
 import { makeid5 } from "../Helpers/MakeId";
+import { isExist } from "../Helpers/isExist";
 import photosnap from "../assets/img/photosnap.svg";
 import manage from "../assets/img/manage.svg";
 import eyecam from "../assets/img/eyecam.svg";
@@ -10,9 +11,9 @@ import loop from "../assets/img/loopStudios.svg";
 import myHome from "../assets/img/myhome.svg";
 import shortly from "../assets/img/shortly.svg";
 import airFilter from "../assets/img/airFilter.svg";
-import type { Vacancy } from "../Helpers/domain";
+import type { Vacancy, Action } from "../Helpers/domain";
 
-export const logoArray = [
+export const logoArray: string[] = [
   photosnap,
   manage,
   eyecam,
@@ -30,7 +31,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Photosnap",
     vacancyName: "FullStack Developer",
-    publishingDate: Date.now(),
+    publishingDate: '1 day ago',
     employmentType: "Full Time",
     location: "USA only",
     logo: photosnap,
@@ -43,7 +44,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Manage",
     vacancyName: "Senior Frontend Developer",
-    publishingDate: Date.now(),
+    publishingDate: '1 day ago',
     employmentType: "Part Time",
     location: "Remote",
     logo: manage,
@@ -57,7 +58,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Eyecam",
     vacancyName: "Backend Developer",
-    publishingDate: Date.now(),
+    publishingDate: '2 days ago',
     employmentType: "Full Time",
     location: "Germany",
     logo: eyecam,
@@ -70,7 +71,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Account",
     vacancyName: "Junior Web Developer",
-    publishingDate: Date.now(),
+    publishingDate: '2 days ago',
     employmentType: "Full Time",
     location: "Remote",
     logo: account,
@@ -83,7 +84,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Faceit",
     vacancyName: "Web Developer",
-    publishingDate: Date.now(),
+    publishingDate: '2 days ago',
     employmentType: "Full Time",
     location: "Remote",
     logo: faceit,
@@ -96,7 +97,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Insure",
     vacancyName: "Software Engineer",
-    publishingDate: Date.now(),
+    publishingDate: '2 days ago',
     employmentType: "Full Time",
     location: "Remote",
     logo: insure,
@@ -109,7 +110,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Loop",
     vacancyName: "Junior Backend Developer",
-    publishingDate: Date.now(),
+    publishingDate: '2 days ago',
     employmentType: "Full Time",
     location: "United Kingdom",
     logo: loop,
@@ -122,7 +123,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "myHome",
     vacancyName: "Junior  Developer",
-    publishingDate: Date.now(),
+    publishingDate: '3 days ago',
     employmentType: "Full Time",
     location: "United Kingdom",
     logo: myHome,
@@ -135,7 +136,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Shortly",
     vacancyName: "Junior  Developer",
-    publishingDate: Date.now(),
+    publishingDate: '3 days ago',
     employmentType: "Full Time",
     location: "EU only",
     logo: shortly,
@@ -148,7 +149,7 @@ const initialState: Vacancy[] = [
     id: makeid5(),
     companyName: "Air Filter",
     vacancyName: "Junior  Developer",
-    publishingDate: Date.now(),
+    publishingDate: '3 days ago',
     employmentType: "Full Time",
     location: "Remote",
     logo: airFilter,
@@ -159,17 +160,24 @@ const initialState: Vacancy[] = [
   },
 ];
 
-const jobVacanciesReducers = (state = initialState, action) => {
+function isVacancy (p: any): p is Vacancy {
+  return isExist(p.id);
+}
+
+const jobVacanciesReducers = (state = initialState, action: Action) => {
   const { type, payload } = action;
   switch (type) {
     case "ADD_JOB_VACANCY":
-      return [...state, payload]; // payload здесь это объект.
+      return [...state, payload];
+    // payload здесь это объект.
     //редюсер всегда возвращает новый стейт
 
     case "REMOVE_JOB_VACANCY":
       return state.filter((vacancy) => vacancy.id !== payload); //payload здесь это id
 
     case "UPDATE_JOB_VACANCY":
+      // check this article https://www.typescriptlang.org/docs/handbook/advanced-types.html#typeof-type-guards
+      if (!isVacancy(payload)) return state;
       return state
         .filter((vacancy) => vacancy.id !== payload.id)
         .concat([payload]); //payload здесь это объект.
