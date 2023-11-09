@@ -1,4 +1,8 @@
-const Tags = ({ tags }) => {
+type TagsProps = {
+  tags: string[];
+};
+
+const Tags: React.FC<TagsProps> = ({ tags }) => {
   return (
     <div className=" h-[2rem]">
       {tags.map((tag) => (

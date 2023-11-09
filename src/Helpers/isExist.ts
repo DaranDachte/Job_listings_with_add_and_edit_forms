@@ -1,1 +1,2 @@
-export const isExist = (param) => param !== null && param !== undefined;
+export const isExist = <T>(param: T): boolean =>
+  param !== null && param !== undefined;

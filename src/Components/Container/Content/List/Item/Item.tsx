@@ -4,6 +4,7 @@ import FirstBlock from "./FirstBlock/FirstBlock";
 import Logo from "./Logo/Logo";
 import Tags from "./Tags/Tags";
 import { REMOVE_JOB_VACANCY } from "../../../../../actions";
+import { Vacancy } from "../../../../../Helpers/domain";
 
 export type ParamsT = {
   vacancyName: string;
@@ -11,12 +12,16 @@ export type ParamsT = {
   labels: string[];
   publishingDate: string;
   employmentType: string;
-  location: Location;
+  location: string;
   tags: string[];
   id: string;
 };
 
-const Item = ({ vacancy }) => {
+type ItemProps = {
+  vacancy: Vacancy;
+};
+
+const Item: React.FC<ItemProps> = ({ vacancy }) => {
   const params = {
     vacancyName: vacancy.vacancyName,
     companyName: vacancy.companyName,
@@ -29,7 +34,7 @@ const Item = ({ vacancy }) => {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleDeleteVacancy = (id) => {
+  const handleDeleteVacancy = (id: string) => {
     dispatch(REMOVE_JOB_VACANCY(id));
   };
 

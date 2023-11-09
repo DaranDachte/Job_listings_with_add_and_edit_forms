@@ -5,13 +5,17 @@ import { ADD_JOB_VACANCY, UPDATE_JOB_VACANCY } from "../../../../actions";
 import { makeid5 } from "../../../../Helpers/MakeId";
 import { isExist } from "../../../../Helpers/isExist";
 import { getRandomLogo } from "../../../../Helpers/getRandomLogo";
-import type { Vacancy } from '../../../../Helpers/domain';
-import type { RootState } from '../../../../store';
+import type { Vacancy } from "../../../../Helpers/domain";
+import type { RootState } from "../../../../store";
 
 const AddAndEditVacancy = () => {
-  const jobVacancies: Vacancy[] = useSelector((state: RootState) => state.jobVacancies);
+  const jobVacancies: Vacancy[] = useSelector(
+    (state: RootState) => state.jobVacancies
+  );
   const { id } = useParams();
-  const vacancyInfo: Vacancy = jobVacancies.filter((vacancy) => vacancy.id === id)[0];
+  const vacancyInfo: Vacancy = jobVacancies.filter(
+    (vacancy) => vacancy.id === id
+  )[0];
 
   const [companyName, setCompanyName] = useState(
     isExist(vacancyInfo) ? vacancyInfo.companyName : ""
@@ -40,7 +44,7 @@ const AddAndEditVacancy = () => {
 
   const labelClasses = "block text-gray-700 text-sm font-bold mb-4";
   const inputClasses = "text-[2rem] p-1 rounded mx-2 outline-none";
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const allIn =
       companyName &&
@@ -75,7 +79,7 @@ const AddAndEditVacancy = () => {
           description,
           id: makeid5(),
           logo: getRandomLogo(),
-          publishingDate: 'just now',
+          publishingDate: "just now",
         };
         dispatch(ADD_JOB_VACANCY(data));
         // dispatch ({type:"ADD_JOB_VACANCY", payload:data })

@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 
-const FirstBlockB = ({ vacancyName, vacancyId }) => {
+type FirstBlockBProps = {
+  vacancyName: string;
+  vacancyId: string;
+};
+
+const FirstBlockB: React.FC<FirstBlockBProps> = ({
+  vacancyName,
+  vacancyId,
+}) => {
   return (
     <div className="flex justify-between ">
       <div>
