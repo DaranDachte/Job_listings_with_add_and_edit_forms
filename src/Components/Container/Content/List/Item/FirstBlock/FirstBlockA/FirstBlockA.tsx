@@ -18,10 +18,10 @@ const FirstBlockA: React.FC<FirstBlockAProps> = ({ labels, companyName }) => {
       <div className="w-1/3">
         <span className=" text-[#5CA5A5]"> {companyName}</span>
       </div>
-      <div className="w-2/3">
+      <div className="w-2/3  ">
         {labels.map((label) => {
-          const spanClasses = ` text-white rounded-lg px-2 py-1 mx-2 my-3 h-[1.5rem] ${colorMap[label]}`;
-          return <span className={spanClasses}>{label}</span>;
+          const spanClasses = ` text-white rounded-[0.75rem] px-2 pb-1 pt-2  mx-2 my-3 h-[1.5rem] ${colorMap[label]}`;
+          return <span className={spanClasses}> {label}</span>;
         })}
       </div>
     </div>
